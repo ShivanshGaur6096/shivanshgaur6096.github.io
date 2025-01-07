@@ -43,10 +43,12 @@ body {
     padding: 0;
     line-height: 1.6;
 }
+
 h2 {
     text-align: center;
     margin-top: 20px;
 }
+
 main {
     padding: 20px;
 }
@@ -76,12 +78,106 @@ section {
     margin-bottom: 40px;
 }
 
+/* Section Styling */
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.filter-button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f3f4f6;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-button.active {
+    background-color: #007bff;
+    color: #fff;
+    position: relative;
+}
+
+.filter-button .close {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.highlighted-skills {
+    /* display: flex; */
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#skills {
+    padding: 3px;
+    text-align: center;
+}
+
+.skill {
+    text-align: center;
+    /* border: 1px solid #ccc;
+    border-radius: 10px; */
+    width: 100px;
+    /* flex: 0 0 auto;
+    padding: 10px; */
+}
+.skill img {
+    width: 80%;
+    border-radius: 10px;
+}
+.filtered-skills {
+    /* list-style: none; */
+    padding: 0;
+    margin: 20px 0;
+}
+.filtered-skills .show-more {
+    color: #007bff;
+    cursor: pointer;
+    font-style: italic;
+}
+.filtered-skills .show-more:hover {
+    text-decoration: underline;
+}
+.filtered-skills li {
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+.more-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 /* Carousels */
 .carousel {
     display: flex;
     overflow-x: auto;
     gap: 15px;
     padding: 10px;
+    scrollbar-width: none; /* Firefox */
+}
+.carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 .carousel-item {
     flex: 0 0 auto;
@@ -162,4 +258,47 @@ footer {
     padding: 20px;
     background: #333;
     color: white;
+}
+
+/* Pop-Up */
+.popup {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.popup.hidden {
+    display: none;
+}
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.popup-header h2 {
+    margin: 0;
+}
+.popup-header .close-popup {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.popup-skills {
+    margin-top: 20px;
+}
+.popup-skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.popup-skills ul li {
+    flex: 0 0 45%;
 }

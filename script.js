@@ -1,4 +1,118 @@
 // Store project details in an object for easier management
+
+const skillsData = {
+    "Development": ["Swift", "SwiftUI", "Objective-C", "Firebase", "XCtest", "Memory Management"],
+    "Design Tools": ["Figma", "Adobe XD", "Sketch", "Zeplin"],
+    "Architecture Pattern": ["MVC", "MVVM", "VIPER", "Clean Architecture"],
+    "Version Control": ["Git", "GitHub", "Bitbucket", "GitLab"],
+    "Languages": ["Swift", "Objective-C", "Python", "JavaScript", "C", "C++"],
+};
+
+const selectedFilters = new Set();
+
+function toggleFilter(category, fromPopup = false) {
+    // const button = document.querySelector(`.filter-button:contains('${category}')`);
+    // const filteredSkills = document.querySelector(".filtered-skills");
+    
+    const button = [...document.querySelectorAll(".filter-button")].find((btn) =>
+        btn.textContent.trim() === category
+    );
+
+    if (!button) return;
+
+    if (selectedFilters.has(category)) {
+        selectedFilters.delete(category);
+        button.classList.remove("active");
+    } else {
+        selectedFilters.add(category);
+        button.classList.add("active");
+    }
+
+    updateFilteredSkills();
+
+    // Close the popup only if toggleFilter is invoked outside the popup
+    if (fromPopup === false) {
+        closePopup();
+    } else {
+        updatePopupSkills(); // Update the popup skills dynamically
+    }
+}
+
+function updatePopupSkills() {
+    const popupSkillsList = document.getElementById("popup-skills-list");
+    popupSkillsList.innerHTML = "";
+
+    if (selectedFilters.size) {
+        selectedFilters.forEach((filter) => {
+            skillsData[filter].forEach((skill) => {
+                const li = document.createElement("li");
+                li.textContent = skill;
+                popupSkillsList.appendChild(li);
+            });
+        });
+    } else {
+        for (const category in skillsData) {
+            skillsData[category].forEach((skill) => {
+                const li = document.createElement("li");
+                li.textContent = skill;
+                popupSkillsList.appendChild(li);
+            });
+        }
+    }
+}
+
+function updateFilteredSkills() {
+    const filteredSkills = document.querySelector(".filtered-skills");
+    const highlightedSkills = document.querySelector(".highlighted-skills");
+
+    // Clear existing content
+    filteredSkills.innerHTML = "";
+    highlightedSkills.style.display = selectedFilters.size ? "none" : "flex";
+
+    if (selectedFilters.size) {
+        selectedFilters.forEach((filter) => {
+            const skills = skillsData[filter];
+            skills.forEach((skill) => {
+                const li = document.createElement("li");
+                li.textContent = skill;
+                filteredSkills.appendChild(li);
+            });
+        });
+    } else {
+        // Default View: Show first 4 skills with icons
+        highlightedSkills.style.display = "flex";
+        filteredSkills.innerHTML = `
+            <li>Firebase</li>
+            <li>Memory Management</li>
+            <li>Zeplin</li>
+            <li>Clean Architecture</li>
+            <li class="show-more" onclick="showMoreSkills()">Show more...</li>
+        `;
+    }
+}
+
+
+function showMoreSkills() {
+    const popup = document.getElementById("popup");
+    const popupSkillsList = document.getElementById("popup-skills-list");
+
+    popupSkillsList.innerHTML = "";
+
+    for (const category in skillsData) {
+        skillsData[category].forEach((skill) => {
+            const li = document.createElement("li");
+            li.textContent = skill;
+            popupSkillsList.appendChild(li);
+        });
+    }
+
+    popup.classList.remove("hidden");
+}
+
+function closePopup() {
+    document.getElementById("popup").classList.add("hidden");
+}
+
 const projectDetails = {
     MagicCall: {
         banner: "assets/project-images/magiccall/magiccall-banner.png",

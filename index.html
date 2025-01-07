@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shivansh Gaur - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivansh Gaur Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Hero Section -->
+    <!-- Header -->
+    <!-- <header id="header">
+        <img src="assets/profile.png" alt="Shivansh Profile" id="profile-image">
+        <span id="profile-name">Shivansh Gaur</span>
+    </header> -->
+
+      <!-- Hero Section -->
   <header id="hero">
     <div class="container">
-      <img src="assets/images/profile.png" alt="Shivansh Gaur" class="profile-pic">
+      <img src="assets/profile.png" alt="Shivansh Gaur" class="profile-pic">
       <h1>Hi, I'm <span>Shivansh Gaur</span></h1>
       <p>iOS Developer | Creative Thinker | Problem Solver</p>
       <a href="#contact" class="btn primary">Let’s Connect</a>
@@ -18,31 +24,141 @@
     </div>
   </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I am an experienced iOS developer with 4+ years of experience in creating user-friendly apps. I specialize in Swift, MVVM architecture, and solving complex problems.</p>
-      <p>Fun fact: Standing tall at 6ft, I bring a towering perspective to challenges!</p>
-    </div>
-  </section>
+    <!-- Main Content -->
+    <main>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="assets/skill-images/xcode.png" alt="Xcode">
+                    <p>Xcode</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/skill-images/swift.png" alt="Swift">
+                    <p>Swift 4.0+</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/skill-images/swiftui.png" alt="SwiftUI">
+                    <p>SwiftUI</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/skill-images/swift-combine.png" alt="Swift Combine">
+                    <p>Combine Framework</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/skill-images/objective-c.png" alt="Objective-C">
+                    <p>Obj-C</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/skill-images/gitlab.png" alt="GitLab">
+                    <p>GitLab</p>
+                </div>
+                <!-- Add more skill carousel items -->
+            </div>
+        </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <div class="project-card">
-        <h3>Voice Assistant Framework</h3>
-        <p>A customizable framework for building voice assistants using Swift and Microsoft Cognitive Services.</p>
-        <a href="#" class="btn secondary">View Code</a>
-      </div>
-      <div class="project-card">
-        <h3>Chat UI Implementation</h3>
-        <p>A feature-rich chat interface with message chunks and dynamic layout handling.</p>
-        <a href="#" class="btn secondary">View Code</a>
-      </div>
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="assets/experience-logos/blackNgreen-logo.png" alt="BlackNGreen Advanced Mobile Solutions Pvt Ltd">
+                    <p>Tech Mahindra<br>Software Engineer<br>Nov, 2023 - Present</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/experience-logos/tech-mahindra.png" alt="Tech Mahindra Ltd">
+                    <p>Tech Mahindra<br>Software Engineer<br>Feb, 2021 - Nov, 2023</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/experience-logos/tech-mahindra.png" alt="Tech Mahindra Ltd">
+                    <p>Tech Mahindra<br>Software Engineer, Trainee<br>Nov, 2020 - Feb, 2021</p>
+                </div>
+                <!-- Add more experience carousel items -->
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="assets/experience-logos/amity_university.png" alt="Amity University">
+                    <p>Amity University, Noida<br>B.Tech, 2016-2020</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/experience-logos/radiant-stars-english-school.png" alt="Radiant Stars English School">
+                    <p>Radiant Stars English School, ALigarh<br>12th, 2014-2016</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/experience-logos/radiant-stars-english-school.png" alt="Radiant Stars English School">
+                    <p>Radiant Stars English School, ALigarh<br>10th, 2012-2014</p>
+                </div>
+                <!-- Add more education carousel items -->
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="carousel">
+                <div class="carousel-item" onclick="showProjectDetails('MagicCall')">
+                    <img src="assets/project-images/magiccall/magiccall-banner.png" alt="MagicCall App">
+                    <p>MagicCall - The New Voice Changer App</p>
+                </div>
+                <div class="carousel-item" onclick="showProjectDetails('Bell')">
+                    <img src="assets/project-images/bell/bell-logo.png" alt="Bell Mobility">
+                    <p>Bell Canada</p>
+                </div>
+                <div class="carousel-item" onclick="showProjectDetails('Virgin Plus')">
+                    <img src="assets/project-images/virgin-plus/virgin-plus-logo.png" alt="Virgin Plus">
+                    <p>Virgin Plus</p>
+                </div>
+                <div class="carousel-item" onclick="showProjectDetails('Lucky Mobile')">
+                    <img src="assets/project-images/lucky-mobile/lucky-mobile-logo.png" alt="Lucky Mobile">
+                    <p>Lucky Mobile</p>
+                </div>
+                <div class="carousel-item" onclick="showProjectDetails('PC Mobile')">
+                    <img src="assets/project-images/pc-mobile/pc-mobile-logo.png" alt="PC Mobile">
+                    <p>PC Mobile</p>
+                </div>
+                <!-- Add more project carousel items -->
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="assets/skill-images/safe6_badge.png" alt="Agile SAFe 6">
+                    <p>SAFe 6 Practitioner<br>Certificate ID: xxxxxxxxxxx</p>
+                </div>  
+                <div class="carousel-item">
+                    <img src="assets/skill-images/bravo_award.png" alt="Bravo Award">
+                    <p>Bravo Award<br>Date: 03/2022</p>
+                </div>  
+                <div class="carousel-item">
+                    <img src="assets/skill-images/bravo_award.png" alt="Bravo Award">
+                    <p>Bravo Award<br>Date: 09/2023</p>
+                </div>  
+            <!-- Add more Achievements carousel items -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="project-banner" src="" alt="Project Banner">
+            <div id="project-description"></div>
+            <!-- <button onclick="closeModal()">Close</button> -->
+        </div>
     </div>
-  </section>
+
+    <script src="script.js"></script>
+
 
   <!-- Contact Section -->
   <section id="contact">
@@ -57,9 +173,10 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Shivansh Gaur. All rights reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Shivansh Gaur. All rights reserved.</p>
+      </footer>
+
 </body>
 </html>

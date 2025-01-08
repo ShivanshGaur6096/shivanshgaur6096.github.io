@@ -26,19 +26,10 @@
             <h2>Skills</h2>
 
             <!-- Filter Buttons -->
-            <div class="carousel"> 
-                <div class="filter-buttons">
-                    <button class="filter-button" onclick="toggleFilter('Development')">Development</button>
-                    <button class="filter-button" onclick="toggleFilter('Design Tools')">Design Tools</button>
-                    <button class="filter-button" onclick="toggleFilter('Architecture Pattern')">Architecture Pattern</button>
-                    <button class="filter-button" onclick="toggleFilter('Version Control')">Version Control</button>
-                    <button class="filter-button" onclick="toggleFilter('Languages')">Languages</button>
-                </div>
-            </div>
+            <div class="filter-buttons"></div>
 
             <!-- Highlighted Skills (Default View) -->
             <div class="highlighted-skills">
-                <div class="carousel">
                 <div class="skill">
                     <img src="assets/skill-images/swift.png" alt="Swift">
                     <!-- <p>Swift</p> -->
@@ -64,41 +55,18 @@
                     <!-- <p>Xcode</p> -->
                 </div>
             </div>
-            </div>
 
             <!-- Filtered Skills -->
+             <!-- Also make chnages in script.js file function updateFilteredSkills() -->
             <ul class="filtered-skills">
                 <li>Firebase</li>
                 <li>Memory Management</li>
-                <li>Zeplin</li>
-                <li>Clean Architecture</li>
+                <li>MVVM</li>
+                <li>Combine Framework</li>
+                <li>App Analytics</li>
                 <li class="show-more" onclick="showMoreSkills()">Show more...</li>
             </ul>
-
-            <!-- "More..." Button -->
-            <!-- <button class="more-button" onclick="showMoreSkills()">More...</button> -->
         </section>
-
-        <!-- Pop-Up View -->
-        <div id="popup" class="popup hidden">
-            <div class="popup-header">
-                <h2>Skills</h2>
-                <button class="close-popup" onclick="closePopup()">×</button>
-            </div>
-            <div class="carousel"> 
-                <div class="filter-buttons">
-                    <button class="filter-button" onclick="toggleFilter('Development', true)">Development</button>
-                    <button class="filter-button" onclick="toggleFilter('Design Tools', true)">Design Tools</button>
-                    <button class="filter-button" onclick="toggleFilter('Architecture Pattern', true)">Architecture Pattern</button>
-                    <button class="filter-button" onclick="toggleFilter('Version Control', true)">Version Control</button>
-                    <button class="filter-button" onclick="toggleFilter('Languages', true)">Languages</button>
-                </div>
-            </div>
-            <div class="popup-skills">
-                <!-- Skills for all categories displayed here -->
-                <ul id="popup-skills-list"></ul>
-            </div>
-        </div>
 
         <!-- Experience Section -->
         <section id="experience">
@@ -189,13 +157,15 @@
         </section>
     </main>
 
-    <!-- Project Details Modal -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <img id="project-banner" src="" alt="Project Banner">
-            <div id="project-description"></div>
-            <!-- <button onclick="closeModal()">Close</button> -->
+     <!-- Project Details Modal -->
+     <div id="project-modal">
+        <!-- Update Heading as per Skill or Project Name <h2>Skills</h2> -->
+        <span id="project-modal-close" onclick="closeModal()">&times;</span>
+        <img id="project-banner" src="" alt="Project Banner" class="modal-banner">
+        <div id="project-carousel" class="carousel"></div>
+        <p id="project-description"></p>
+        <div class="download-links">
+            <a id="ios-download" href="#" target="_blank" class="download-btn">Download for iOS</a>
         </div>
     </div>
 

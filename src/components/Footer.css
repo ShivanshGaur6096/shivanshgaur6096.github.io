@@ -1,0 +1,36 @@
+/* Footer Styles */
+.footer {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  background: #000; /* Dark background */
+  color: white;
+  overflow: hidden; /* Hide overflowing images */
+}
+
+/* Footer content */
+.footer-content {
+  margin-bottom: 20px;
+}
+
+/* Skill images displayed in grid layout */
+.footer-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Adjusts to screen size */
+  gap: 15px;
+  justify-items: center;
+  padding: 10px;
+  opacity: 0.5; /* Light color effect */
+}
+
+/* Skill image styles */
+.footer-skill {
+  width: 50px;
+  height: 50px;
+  filter: grayscale(100%); /* Make images light grey */
+  transition: filter 0.3s ease; /* Smooth transition */
+}
+
+.footer-skill:hover {
+  filter: grayscale(0%); /* Remove grayscale on hover */
+}

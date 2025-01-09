@@ -1,5 +1,48 @@
 // Static data for Skills, Projects, Experiences, and Achievements
 
+// Import all skill images
+export const skills = [
+  "app-store.png",
+  "apple-logo.png",
+  "apple-pay.png",
+  "apple-vision-pro.png",
+  "apple.png",
+  "bravo_award.png",
+  "gitlab.png",
+  "notifications-icon.png",
+  "objective-c.png",
+  "safe6_badge.png",
+  "sdk-framework.png",
+  "swift-combine.png",
+  "swift.png",
+  "swiftui.png",
+  "xcode.png",
+  "XCTest.png",
+];
+
+export const footerSkills = [
+  "app-store.png",
+  "apple-logo.png",
+  "apple-pay.png",
+  "apple-vision-pro.png",
+  "apple.png",
+  "bravo_award.png",
+  "gitlab.png",
+  "notifications-icon.png",
+  "objective-c.png",
+  "safe6_badge.png",
+  "sdk-framework.png",
+  "swift.png",
+  "swiftui.png",
+  "xcode.png",
+  "XCTest.png",
+  "virgin-plus-logo.png",
+  "bell-logo.png",
+  "tech-mahindra.png",
+  "blackNgreen-logo.png",
+  // bng, techm, bell, vision
+];
+
 // Skills categorized by type
 export const skillsData = {
     "Languages": ["Swift", "SwiftUI", "Obj-C", "ReactJS", "HTML","CSS","JavaScript"],

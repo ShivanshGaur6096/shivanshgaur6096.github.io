@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Hero from "./components/Hero";
 import Toolbar from "./components/Toolbar";
+import SkillsRain from "./components/SkillsRain";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
@@ -29,6 +30,7 @@ function App() {
         <Hero />
       </div>
       <main>
+        <SkillsRain />
         <Skills />
         <Experience />
         <Education />

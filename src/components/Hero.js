@@ -10,7 +10,7 @@ const Hero = () => (
       </h1>
       <p>iOS Developer | Creative Thinker | Problem Solver</p>
       <a href="#contact" className="btn primary">Let’s Connect</a>
-      <a href="https://drive.google.com/file/d/1MrFDXkiFrLeakrPBP8b1iwlFkY4VZgGh/view" className="btn secondary" target="_blank" rel="noopener noreferrer">View Resume</a>
+      <a href="https://drive.google.com/file/d/1BCBIEBtwSu-0jf_3f84444_8OJdlyszv/view?usp=sharing" className="btn secondary" target="_blank" rel="noopener noreferrer">View Resume</a>
     </div>
   </header>
 );

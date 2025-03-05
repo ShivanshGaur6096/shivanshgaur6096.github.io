@@ -40,7 +40,7 @@ const Projects = () => {
           <p dangerouslySetInnerHTML={{ __html: selectedProject.description }}></p>
           
           <a id="ios-download" href={selectedProject.iosLink} target="_blank" rel="noopener noreferrer" class="download-btn">
-            Download for iOS
+            AppStore
           </a>
 
           <div className="project-carousel">

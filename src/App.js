@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
-import Hero from "./components/Hero";
 import Toolbar from "./components/Toolbar";
 import SkillsRain from "./components/SkillsRain";
 import Skills from "./components/Skills";
@@ -12,6 +11,9 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./styles.css";
 
+// TODO: New Landing
+import LandingPage from "./components/LandingPage"
+
 function App() {
   const [isToolbarVisible, setIsToolbarVisible] = useState(false);
 
@@ -19,7 +21,7 @@ function App() {
   const { ref: heroRef } = useInView({
     threshold: [0.2, 0], // 80% and 100% visibility triggers
     onChange: (inView, entry) => {
-      setIsToolbarVisible(!inView && entry.boundingClientRect.top < 0);
+      setIsToolbarVisible(!inView && entry.boundingClientRect.top < 20);
     },
   });
 
@@ -27,7 +29,7 @@ function App() {
     <div>
       <Toolbar isVisible={isToolbarVisible} />
       <div ref={heroRef}>
-        <Hero />
+        <LandingPage /> 
       </div>
       <main>
         <SkillsRain />

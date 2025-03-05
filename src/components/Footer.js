@@ -1,5 +1,5 @@
 import React from "react";
-import { footerSkills } from "../data";
+// import { footerSkills } from "../data";
 import "./Footer.css";
 
 // const Footer = () => (
@@ -19,7 +19,7 @@ const Footer = () => (
       <p>Standing tall at 6ft, I bring a towering perspective to every challenge!</p>
     </div>
     {/* Skill images in the background */}
-    <div className="footer-skill-grid">
+    {/* <div className="footer-skill-grid">
       {footerSkills.map((footerSkills, idx) => (
         <img
           key={idx}
@@ -28,7 +28,7 @@ const Footer = () => (
           className="footer-skill"
         />
       ))}
-    </div>
+    </div> */}
   </footer>
 );
 

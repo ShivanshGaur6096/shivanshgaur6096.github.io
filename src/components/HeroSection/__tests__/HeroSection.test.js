@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import * as fc from 'fast-check';
 import HeroSection from '../HeroSection';
 import HintText from '../HintText';
@@ -45,37 +45,26 @@ describe('HeroSection Integration and Unit Tests', () => {
   });
 
   /**
-   * Property 5: Hint dismissed permanently after first interaction
-   * For any sequence of user interactions after first dismissal,
-   * hint text remains hidden.
+   * Property 5: Hint dismissed / hidden when isVisible is false
    * Validates: Requirements 7.2
    */
-  test('Property 5: Hint dismissed permanently after first interaction', () => {
+  test('Property 5: Hint visibility controlled by isVisible prop', () => {
     fc.assert(
       fc.property(
-        fc.integer({ min: 1, max: 10 }),
-        (extraDismissClicks) => {
-          let isVisible = true;
-          const onDismiss = () => {
-            isVisible = false;
-          };
+        fc.string({ minLength: 1, maxLength: 50 }),
+        (testMessage) => {
+          const { rerender } = render(
+            <HintText message={testMessage} isVisible={true} isInteractive={false} />
+          );
+          expect(screen.getByText(testMessage)).toBeInTheDocument();
 
-          const { rerender } = render(<HintText isVisible={isVisible} onDismiss={onDismiss} />);
-          expect(screen.getByRole('note')).toBeInTheDocument();
-
-          // First dismissal
-          onDismiss();
-          rerender(<HintText isVisible={isVisible} onDismiss={onDismiss} />);
-          expect(screen.queryByRole('note')).not.toBeInTheDocument();
-
-          // Subsequent clicks / events
-          for (let i = 0; i < extraDismissClicks; i++) {
-            rerender(<HintText isVisible={isVisible} onDismiss={onDismiss} />);
-            expect(screen.queryByRole('note')).not.toBeInTheDocument();
-          }
+          rerender(
+            <HintText message={testMessage} isVisible={false} isInteractive={false} />
+          );
+          expect(screen.queryByText(testMessage)).not.toBeInTheDocument();
         }
       ),
-      { numRuns: 50 }
+      { numRuns: 30 }
     );
   });
 

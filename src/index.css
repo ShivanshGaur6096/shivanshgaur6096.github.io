@@ -33,6 +33,13 @@
   --warning: #eab308;
   --error: #ef4444;
 
+  /* Border Radius Scale (Standard Enterprise Design System) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
   /* Spacing */
   --space-1: 4px;
   --space-2: 8px;

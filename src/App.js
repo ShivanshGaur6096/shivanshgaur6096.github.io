@@ -5,7 +5,7 @@ import HeroSection from "./components/HeroSection/HeroSection";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
-import Projects from "./components/Projects";
+import ProjectsSection from "./components/ProjectsSection";
 import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -29,10 +29,10 @@ function App() {
         <HeroSection /> 
       </div>
       <main>
+        <ProjectsSection />
         <Skills />
         <Experience />
         <Education />
-        <Projects />
         <Achievements />
       </main>
       <Contact />

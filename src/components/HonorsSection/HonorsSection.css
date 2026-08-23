@@ -325,7 +325,16 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.testimonials-disclaimer-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
   margin: 0;
+  letter-spacing: 0.01em;
 }
 
 .testimonials-count-badge {

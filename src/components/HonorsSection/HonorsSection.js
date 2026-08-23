@@ -254,7 +254,12 @@ export function HonorsSection() {
 
         {/* Testimonials Marquee Ticker Subsection */}
         <div className="testimonials-header-row">
-          <h3 className="testimonials-section-title">Peer & Client Testimonials</h3>
+          <div>
+            <h3 className="testimonials-section-title">Peer & Client Testimonials</h3>
+            <p className="testimonials-disclaimer-note">
+              *Disclaimer: Purely illustrative placeholders for now... but let’s be honest, if you asked them, they’d probably say something even nicer! 😉
+            </p>
+          </div>
           <span className="testimonials-count-badge">Click card to view full feedback</span>
         </div>
 

@@ -1,46 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import Toolbar from "./components/Toolbar";
-import SkillsRain from "./components/SkillsRain";
-import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import Education from "./components/Education";
-import Projects from "./components/Projects";
-import Achievements from "./components/Achievements";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import HeroSection from "./components/HeroSection/HeroSection";
+import ProjectsSection from "./components/ProjectsSection";
+import ExperienceSection from "./components/ExperienceSection/ExperienceSection";
+import HonorsSection from "./components/HonorsSection/HonorsSection";
+import ContactFooterSection from "./components/ContactFooterSection/ContactFooterSection";
 import "./styles.css";
 
-// TODO: New Landing
-import LandingPage from "./components/LandingPage"
-
 function App() {
-  const [isToolbarVisible, setIsToolbarVisible] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
+  const [isContactVisible, setIsContactVisible] = useState(false);
 
-  // Use IntersectionObserver to track the Hero visibility
-  const { ref: heroRef } = useInView({
-    threshold: [0.2, 0], // 80% and 100% visibility triggers
-    onChange: (inView, entry) => {
-      setIsToolbarVisible(!inView && entry.boundingClientRect.top < 20);
+  // Reliable scroll position tracking for Hero exit / return
+  useEffect(() => {
+    const handleScroll = () => {
+      // Hero section is approx first viewport height (use 220px threshold for early hide)
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      setIsPastHero(scrollY > 180);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Track Contact/Footer section visibility
+  const { ref: contactRef } = useInView({
+    threshold: 0.1,
+    onChange: (inView) => {
+      setIsContactVisible(inView);
     },
   });
+
+  // Toolbar is visible ONLY when past Hero AND NOT in Contact section
+  const isToolbarVisible = isPastHero && !isContactVisible;
 
   return (
     <div>
       <Toolbar isVisible={isToolbarVisible} />
-      <div ref={heroRef}>
-        <LandingPage /> 
+      <div id="hero">
+        <HeroSection /> 
       </div>
       <main>
-        <SkillsRain />
-        <Skills />
-        <Experience />
-        <Education />
-        <Projects />
-        <Achievements />
+        <ProjectsSection />
+        <ExperienceSection />
+        <HonorsSection />
+        <div ref={contactRef}>
+          <ContactFooterSection />
+        </div>
       </main>
-      <Contact />
-      <Footer />
     </div>
   );
 }

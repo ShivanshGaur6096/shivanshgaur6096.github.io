@@ -1,0 +1,489 @@
+/* ==========================================================================
+   Honors, Certifications & Testimonials Section Styles
+   ========================================================================== */
+
+.honors-section {
+  position: relative;
+  width: 100%;
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-24);
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Ambient Fluid Glow Mesh (Emerald / Teal -> Cyan / Blue Shift) */
+.honors-ambient-mesh {
+  position: absolute;
+  top: -120px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.honors-ambient-orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(120px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+/* Orb 1: Upper Teal (Bridges smoothly from Experience section) */
+.honors-orb-1 {
+  top: 10%;
+  left: 10%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #0d9488 0%, rgba(13, 148, 136, 0) 70%);
+  animation: honorOrb1 20s ease-in-out infinite alternate;
+}
+
+/* Orb 2: Azure / Electric Blue */
+.honors-orb-2 {
+  top: 40%;
+  right: 8%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #0284c7 0%, rgba(2, 132, 199, 0) 70%);
+  animation: honorOrb2 24s ease-in-out infinite alternate;
+}
+
+/* Orb 3: Warm Amber / Gold glow for awards */
+.honors-orb-3 {
+  bottom: 10%;
+  left: 30%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, rgba(245, 158, 11, 0) 70%);
+  animation: honorOrb3 18s ease-in-out infinite alternate;
+}
+
+@keyframes honorOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.1); }
+  100% { transform: translate(-30px, 50px) scale(0.95); }
+}
+
+@keyframes honorOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -40px) scale(1.15); }
+  100% { transform: translate(30px, -30px) scale(1.05); }
+}
+
+@keyframes honorOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.1); }
+  100% { transform: translate(-40px, 20px) scale(0.9); }
+}
+
+/* --------------------------------------------------------------------------
+   Container & Section Header
+   -------------------------------------------------------------------------- */
+
+.honors-container {
+  width: 100%;
+  margin: 0;
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .honors-container {
+    padding: 0 var(--space-16);
+  }
+}
+
+.honors-header {
+  margin-bottom: var(--space-12);
+  text-align: left !important;
+}
+
+.honors-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  text-align: left !important;
+}
+
+.honors-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.5;
+  text-align: left !important;
+}
+
+/* --------------------------------------------------------------------------
+   Top Credentials Grid (SAFe 6 + Bravo Awards)
+   -------------------------------------------------------------------------- */
+
+.honors-credentials-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.honors-card {
+  position: relative;
+  background: rgba(18, 18, 22, 0.45);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 4px solid var(--honor-accent-color, #0284c7);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: transform var(--duration-standard) var(--ease-out),
+              box-shadow var(--duration-standard) var(--ease-out),
+              border-color var(--duration-standard) var(--ease-out),
+              background var(--duration-standard) var(--ease-out);
+  box-sizing: border-box;
+}
+
+.honors-card:hover {
+  transform: translateY(-4px);
+  background: rgba(24, 24, 30, 0.65);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55),
+              0 0 24px color-mix(in srgb, var(--honor-accent-color, #0284c7) 25%, transparent),
+              inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.honors-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.honors-card-branding {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.honors-card-badge-img {
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.honors-cert-badge-large {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: rgba(2, 132, 199, 0.08);
+  padding: 6px;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.honors-award-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(245, 158, 11, 0.08);
+  padding: 5px;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.honors-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.honors-card-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.honors-card-issuer {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 2px;
+}
+
+/* Verified Badge */
+.honors-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.honors-verified-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+.honors-period-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+.honors-card-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.honors-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.honors-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.honors-tag-cert {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.25);
+  color: #38bdf8;
+}
+
+.honors-tag-award {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #fbbf24;
+}
+
+/* 2 Bravo Awards Subgrid (50/50) */
+.honors-awards-subgrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 900px) {
+  .honors-awards-subgrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Continuous Marquee Ticker for Testimonials
+   -------------------------------------------------------------------------- */
+
+.testimonials-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.testimonials-section-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+.testimonials-disclaimer-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.testimonials-count-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.testimonials-ticker-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: var(--space-2) 0;
+}
+
+/* Left & Right Smooth Edge Fade Vignettes */
+.testimonials-fade-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary) 0%, transparent 100%);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary) 0%, transparent 100%);
+}
+
+.testimonials-ticker-track {
+  display: flex;
+  gap: var(--space-6);
+  overflow-x: auto;
+  scroll-behavior: auto;
+  cursor: grab;
+  user-select: none;
+  padding: var(--space-2) var(--space-2) var(--space-4) var(--space-2);
+  scrollbar-width: none; /* Hide default scrollbar */
+  -ms-overflow-style: none;
+}
+
+.testimonials-ticker-track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-ticker-track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+/* Compact Width Testimonial Card */
+.testimonial-card-compact {
+  flex: 0 0 340px; /* Reduced compact card width */
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-5);
+}
+
+@media (max-width: 600px) {
+  .testimonial-card-compact {
+    flex: 0 0 280px;
+    max-width: 280px;
+    padding: var(--space-4);
+  }
+}
+
+.testimonial-quote-icon {
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: #10b981;
+  opacity: 0.5;
+  margin-bottom: var(--space-1);
+}
+
+.testimonial-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: var(--space-5);
+}
+
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.testimonial-author-branding {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.testimonial-avatar-fallback {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testimonial-author-name {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.testimonial-author-role {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  display: block;
+}
+
+.testimonial-endorsement-pill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}

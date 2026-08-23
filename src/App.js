@@ -3,9 +3,8 @@ import { useInView } from "react-intersection-observer";
 import Toolbar from "./components/Toolbar";
 import HeroSection from "./components/HeroSection/HeroSection";
 import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import Education from "./components/Education";
 import ProjectsSection from "./components/ProjectsSection";
+import ExperienceSection from "./components/ExperienceSection/ExperienceSection";
 import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -30,10 +29,8 @@ function App() {
       </div>
       <main>
         <ProjectsSection />
+        <ExperienceSection />
         <Skills />
-        <Experience />
-        <Education />
-        <Achievements />
       </main>
       <Contact />
       <Footer />

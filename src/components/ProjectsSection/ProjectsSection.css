@@ -93,8 +93,9 @@
   }
 
   .project-carousel-container {
-    scroll-padding: 0 var(--space-16);
-    padding: 24px var(--space-16) 36px var(--space-16);
+    /* Center-stage padding so first and last cards can sit dead-center in the viewport */
+    scroll-padding: 0 calc((100vw - 680px) / 2);
+    padding: 24px calc((100vw - 680px) / 2) 36px calc((100vw - 680px) / 2);
     gap: var(--space-8);
   }
 }
@@ -112,7 +113,7 @@
     flex: 0 0 680px;
     width: 680px;
     max-width: none;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
   }
 }
 

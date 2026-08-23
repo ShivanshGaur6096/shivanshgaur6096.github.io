@@ -284,7 +284,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.project-card-branding {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .project-card-logo {
@@ -294,6 +300,7 @@
   object-fit: cover;
   background-color: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
 }
 
 .project-card-logo[src*="NWG"],

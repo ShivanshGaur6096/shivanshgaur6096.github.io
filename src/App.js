@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Toolbar from "./components/Toolbar";
-import SkillsRain from "./components/SkillsRain";
+import HeroSection from "./components/HeroSection/HeroSection";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
@@ -10,9 +10,6 @@ import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./styles.css";
-
-// TODO: New Landing
-import LandingPage from "./components/LandingPage"
 
 function App() {
   const [isToolbarVisible, setIsToolbarVisible] = useState(false);
@@ -29,10 +26,9 @@ function App() {
     <div>
       <Toolbar isVisible={isToolbarVisible} />
       <div ref={heroRef}>
-        <LandingPage /> 
+        <HeroSection /> 
       </div>
       <main>
-        <SkillsRain />
         <Skills />
         <Experience />
         <Education />

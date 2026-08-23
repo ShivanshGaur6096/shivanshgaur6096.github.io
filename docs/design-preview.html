@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Design Preview</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@700;800&family=Syne:wght@700;800&family=Space+Grotesk:wght@700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #09090b;
+      color: #fafafa;
+      line-height: 1.6;
+      padding: 40px;
+    }
+
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #71717a;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      margin-top: 60px;
+    }
+
+    .section {
+      margin-bottom: 80px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* === LOGO FONTS === */
+    .font-options {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .font-option {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    .font-option .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #71717a;
+      min-width: 140px;
+    }
+
+    .font-syne { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 56px; }
+    .font-space { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 56px; }
+    .font-outfit { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 56px; }
+    .font-unbounded { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 52px; }
+
+    /* === TYPOGRAPHY SCALE === */
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .type-display { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 48px; letter-spacing: -0.02em; line-height: 1.1; }
+    .type-h1 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 36px; letter-spacing: -0.01em; }
+    .type-h2 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 28px; }
+    .type-body { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; color: #a1a1aa; max-width: 600px; }
+    .type-label { font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 13px; color: #71717a; letter-spacing: 0.05em; }
+
+    /* === COLORS === */
+    .color-themes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .theme-preview {
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .theme-preview.dark {
+      background: #09090b;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .theme-preview.light {
+      background: #ffffff;
+      color: #09090b;
+      border-color: rgba(0,0,0,0.08);
+    }
+
+    .color-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+
+    .color-swatch .hex {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #71717a;
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+      white-space: nowrap;
+    }
+
+    .light .color-swatch { border-color: rgba(0,0,0,0.1); }
+
+    /* === PROJECT CARD === */
+    .card-preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .project-card {
+      background: #111113;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .project-card.natwest::before { background: #3c1053; }
+    .project-card.bell::before { background: #0066A4; }
+
+    .project-card .card-image {
+      width: 120px;
+      height: 120px;
+      background: #1a1a1e;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #71717a;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .project-card .card-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .project-card .card-content p {
+      font-size: 14px;
+      color: #a1a1aa;
+      margin-bottom: 12px;
+    }
+
+    .project-card .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: #1a1a1e;
+      color: #a1a1aa;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* === GLASS EFFECT === */
+    .glass-demo {
+      position: relative;
+      height: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #3c1053, #0066A4, #D71C2B);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-indicator {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 8px 16px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .glass-indicator .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .glass-indicator .dot.active {
+      background: #ffffff;
+    }
+
+    /* === BUTTONS === */
+    .buttons-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: #60a5fa; }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fafafa;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-secondary:hover { background: #1a1a1e; }
+
+    .btn-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1a1a1e;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #a1a1aa;
+      font-size: 16px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-icon:hover { background: #2a2a2e; color: #fafafa; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      body { padding: 20px; }
+      .color-themes { grid-template-columns: 1fr; }
+      .card-preview { grid-template-columns: 1fr; }
+      .font-syne, .font-space, .font-outfit, .font-unbounded { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h2>1. Logo Font Options — "Shivansh Gaur"</h2>
+    <div class="font-options">
+      <div class="font-option">
+        <span class="label">Syne (800)</span>
+        <span class="font-syne">Shivansh Gaur</span>
+      </div>
+      <div class="font-option">
+        <span class="label">Space Grotesk (700)</span>
+        <span class="font-space">Shivansh Gaur</span>
+      </div>
+      <div class="font-option">
+        <span class="label">Outfit (800)</span>
+        <span class="font-outfit">Shivansh Gaur</span>
+      </div>
+      <div class="font-option">
+        <span class="label">Unbounded (700)</span>
+        <span class="font-unbounded">Shivansh Gaur</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Typography Scale (Inter + JetBrains Mono)</h2>
+    <div class="type-scale">
+      <div class="type-display">What I've Built</div>
+      <div class="type-h1">iOS Developer</div>
+      <div class="type-h2">Project Heading</div>
+      <div class="type-body">I craft native iOS experiences for apps used by millions. Currently building at Natwest, previously shaped products at BlackNGreen and Tech Mahindra.</div>
+      <div class="type-label">Nov 2023 — Present · Software Engineer</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Color Palette — Dark vs Light</h2>
+    <div class="color-themes">
+      <div class="theme-preview dark">
+        <p style="font-size:12px;color:#71717a;margin-bottom:16px;">DARK THEME</p>
+        <div class="color-row">
+          <div class="color-swatch" style="background:#09090b"><span class="hex">#09090b</span></div>
+          <div class="color-swatch" style="background:#111113"><span class="hex">#111113</span></div>
+          <div class="color-swatch" style="background:#1a1a1e"><span class="hex">#1a1a1e</span></div>
+          <div class="color-swatch" style="background:#3b82f6"><span class="hex">#3b82f6</span></div>
+        </div>
+        <div style="margin-top:32px">
+          <p style="color:#fafafa;font-size:16px;margin-bottom:4px;">Primary text</p>
+          <p style="color:#a1a1aa;font-size:14px;margin-bottom:4px;">Secondary text</p>
+          <p style="color:#71717a;font-size:12px;">Muted / label text</p>
+        </div>
+      </div>
+      <div class="theme-preview light">
+        <p style="font-size:12px;color:#a1a1aa;margin-bottom:16px;">LIGHT THEME</p>
+        <div class="color-row">
+          <div class="color-swatch" style="background:#ffffff;border-color:rgba(0,0,0,0.1)"><span class="hex" style="color:#71717a">#ffffff</span></div>
+          <div class="color-swatch" style="background:#f4f4f5;border-color:rgba(0,0,0,0.1)"><span class="hex" style="color:#71717a">#f4f4f5</span></div>
+          <div class="color-swatch" style="background:#e4e4e7;border-color:rgba(0,0,0,0.1)"><span class="hex" style="color:#71717a">#e4e4e7</span></div>
+          <div class="color-swatch" style="background:#2563eb;border-color:rgba(0,0,0,0.1)"><span class="hex" style="color:#71717a">#2563eb</span></div>
+        </div>
+        <div style="margin-top:32px">
+          <p style="color:#09090b;font-size:16px;margin-bottom:4px;">Primary text</p>
+          <p style="color:#52525b;font-size:14px;margin-bottom:4px;">Secondary text</p>
+          <p style="color:#a1a1aa;font-size:12px;">Muted / label text</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>4. Project Cards (with brand accent)</h2>
+    <div class="card-preview">
+      <div class="project-card natwest">
+        <div class="card-image">Screenshot</div>
+        <div class="card-content">
+          <h3>Natwest</h3>
+          <p>Building digital banking experiences for millions of UK customers.</p>
+          <div class="tags">
+            <span class="tag">Swift</span>
+            <span class="tag">SwiftUI</span>
+            <span class="tag">Combine</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card bell">
+        <div class="card-image">Screenshot</div>
+        <div class="card-content">
+          <h3>Bell Canada</h3>
+          <p>Shipped features across Bell, Virgin Plus, Lucky Mobile, and PC Mobile.</p>
+          <div class="tags">
+            <span class="tag">Swift</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">MVVM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5. Frosted Glass Pagination Indicator</h2>
+    <div class="glass-demo">
+      <div class="glass-indicator">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>6. Button Styles</h2>
+    <div class="buttons-row">
+      <button class="btn-primary">Download Resume</button>
+      <button class="btn-secondary">View on App Store</button>
+      <button class="btn-icon">⚙</button>
+      <button class="btn-icon">🌙</button>
+      <button class="btn-icon">🔇</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>7. Brand Colors for Project Cards</h2>
+    <div class="color-row" style="gap:20px;">
+      <div>
+        <div class="color-swatch" style="background:#3c1053;width:64px;height:64px;border-radius:12px;"><span class="hex">#3c1053</span></div>
+        <p style="font-size:11px;color:#71717a;margin-top:20px;">Natwest</p>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#D71C2B;width:64px;height:64px;border-radius:12px;"><span class="hex">#D71C2B</span></div>
+        <p style="font-size:11px;color:#71717a;margin-top:20px;">MagicCall</p>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#ea4335;width:64px;height:64px;border-radius:12px;"><span class="hex">#ea4335</span></div>
+        <p style="font-size:11px;color:#71717a;margin-top:20px;">AI Voice</p>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#0066A4;width:64px;height:64px;border-radius:12px;"><span class="hex">#0066A4</span></div>
+        <p style="font-size:11px;color:#71717a;margin-top:20px;">Bell</p>
+      </div>
+      <div>
+        <div class="color-swatch" style="background:#3b82f6;width:64px;height:64px;border-radius:12px;"><span class="hex">#3b82f6</span></div>
+        <p style="font-size:11px;color:#71717a;margin-top:20px;">Portfolio</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

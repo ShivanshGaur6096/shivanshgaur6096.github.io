@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "../assets/profile.png";
+import profile from "../assets/profile.jpg";
 import connectIcon from "../assets/connect.png";
 import downloadIcon from "../assets/resumeView.png";
 import "./Toolbar.css";

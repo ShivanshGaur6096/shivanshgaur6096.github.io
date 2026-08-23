@@ -1,7 +1,6 @@
 import React from "react";
 import profile from "../assets/profile.jpg";
 import { heroContent } from "./HeroSection/heroData";
-import { AppStoreIcon, ExternalLinkIcon } from "./ProjectsSection/icons/ProjectIcons";
 import "./Toolbar.css";
 
 const Toolbar = ({ isVisible }) => {
@@ -19,7 +18,10 @@ const Toolbar = ({ isVisible }) => {
         aria-label="Scroll to top"
       >
         <img src={profile} alt="Shivansh Gaur" className="toolbar-profile-pic" />
-        <span className="toolbar-name">Shivansh Gaur</span>
+        <span className="toolbar-name">
+          <span className="toolbar-name-full">Shivansh Gaur</span>
+          <span className="toolbar-name-short">Shivansh</span>
+        </span>
       </button>
 
       {/* Right Section - Action Pills */}

@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PaginationIndicator from './PaginationIndicator';
 import { AppStoreIcon } from './icons/ProjectIcons';
 
 /**
  * ScreenshotCarousel Component
- * Horizontal scroll-snap screenshot carousel with 4s auto-advance and pause on hover.
+ * Horizontal scroll-snap screenshot carousel with auto-advance and unified geometric pagination.
  */
 export function ScreenshotCarousel({ screenshots = [], appStoreLink, title }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -110,18 +111,18 @@ export function ScreenshotCarousel({ screenshots = [], appStoreLink, title }) {
         ))}
       </div>
 
-      {/* Floating Bottom-Center Pagination Dots pinned over the carousel wrapper */}
+      {/* Floating Bottom-Center Geometric Pagination with Frosted Bubbles */}
       {screenshots.length > 1 && (
-        <div className="screenshot-pagination-capsule" aria-label="Screenshots pagination">
-          {screenshots.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              className={`screenshot-dot ${index === activeSlide ? 'screenshot-dot-active' : ''}`}
-              onClick={() => scrollToSlide(index)}
-              aria-label={`Go to screenshot ${index + 1}`}
-            />
-          ))}
+        <div className="screenshot-pagination-capsule">
+          <PaginationIndicator
+            totalCount={screenshots.length}
+            activeIndex={activeSlide}
+            onDotClick={scrollToSlide}
+            onPrev={() => scrollToSlide(Math.max(0, activeSlide - 1))}
+            onNext={() => scrollToSlide(Math.min(screenshots.length - 1, activeSlide + 1))}
+            bubbleSize={30}
+            shapeSize={13}
+          />
         </div>
       )}
 

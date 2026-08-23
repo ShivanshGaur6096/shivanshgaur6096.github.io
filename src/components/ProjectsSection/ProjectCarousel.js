@@ -5,7 +5,6 @@ import GitHubProjectsCard from './GitHubProjectsCard';
 import PaginationIndicator from './PaginationIndicator';
 import { useCarouselPosition } from './hooks/useCarouselPosition';
 import { useVisitedLinks } from './hooks/useVisitedLinks';
-import { ChevronLeftIcon, ChevronRightIcon } from './icons/ProjectIcons';
 
 /**
  * ProjectCarousel Component
@@ -20,17 +19,6 @@ export function ProjectCarousel({ onOpenDetail }) {
 
   return (
     <div className="project-carousel-wrapper">
-      {/* Desktop Prev/Next Quick Navigation Buttons */}
-      <button
-        type="button"
-        className="project-nav-arrow project-nav-arrow-left"
-        onClick={() => scrollToIndex(Math.max(0, activeIndex - 1))}
-        aria-label="Previous project slide"
-        disabled={activeIndex === 0}
-      >
-        <ChevronLeftIcon size={18} />
-      </button>
-
       <div className="project-carousel-container" ref={containerRef}>
         {projectCards.map((project) => (
           <div key={project.id} className="project-carousel-item">
@@ -47,20 +35,13 @@ export function ProjectCarousel({ onOpenDetail }) {
         </div>
       </div>
 
-      <button
-        type="button"
-        className="project-nav-arrow project-nav-arrow-right"
-        onClick={() => scrollToIndex(Math.min(totalSlides - 1, activeIndex + 1))}
-        aria-label="Next project slide"
-        disabled={activeIndex >= totalSlides - 1}
-      >
-        <ChevronRightIcon size={18} />
-      </button>
-
+      {/* Integrated Frosted Glass Navigation Pill with Chevrons & Dots */}
       <PaginationIndicator
         totalCount={totalSlides}
         activeIndex={activeIndex}
         onDotClick={scrollToIndex}
+        onPrev={() => scrollToIndex(Math.max(0, activeIndex - 1))}
+        onNext={() => scrollToIndex(Math.min(totalSlides - 1, activeIndex + 1))}
         projectNames={slideNames}
       />
     </div>

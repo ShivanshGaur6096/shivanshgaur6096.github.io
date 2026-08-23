@@ -12,14 +12,16 @@
 }
 
 .projects-container {
-  max-width: 1600px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 0 var(--space-6);
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
   .projects-container {
-    padding: 0 var(--space-16); /* Aligns perfectly with Hero section left margin */
+    padding: 0 var(--space-16); /* Matches Hero section --hero-padding-x line edge-to-edge */
   }
 }
 
@@ -69,8 +71,8 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  scroll-padding: 0 calc((100vw - 320px) / 2);
-  padding: var(--space-4) calc((100vw - 320px) / 2) var(--space-6) calc((100vw - 320px) / 2);
+  scroll-padding: 0 var(--space-6);
+  padding: 20px var(--space-6) 28px var(--space-6);
   scrollbar-width: none;
   cursor: grab;
 }
@@ -83,11 +85,6 @@
   display: none;
 }
 
-/* Desktop Floating Navigation Arrows */
-.project-nav-arrow {
-  display: none;
-}
-
 @media (min-width: 900px) {
   .project-carousel-wrapper {
     /* Full-bleed expansive carousel across the full screen width */
@@ -97,57 +94,16 @@
 
   .project-carousel-container {
     scroll-padding: 0 var(--space-16);
-    padding: var(--space-4) var(--space-16) var(--space-6) var(--space-16);
+    padding: 24px var(--space-16) 36px var(--space-16);
     gap: var(--space-8);
-  }
-
-  .project-nav-arrow {
-    position: absolute;
-    top: 48%;
-    transform: translateY(-50%);
-    z-index: 20;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-full);
-    background: rgba(17, 17, 19, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-default);
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    transition: all var(--duration-micro) var(--ease-out);
-  }
-
-  .project-nav-arrow:hover:not(:disabled) {
-    background: var(--bg-tertiary);
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-50%) scale(1.08);
-  }
-
-  .project-nav-arrow:disabled {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .project-nav-arrow-left {
-    left: var(--space-6);
-  }
-
-  .project-nav-arrow-right {
-    right: var(--space-6);
   }
 }
 
 .project-carousel-item {
-  flex: 0 0 320px;
-  width: 320px;
-  max-width: 85vw;
-  scroll-snap-align: center;
+  flex: 0 0 88vw;
+  width: 88vw;
+  max-width: 360px;
+  scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
@@ -156,35 +112,116 @@
     flex: 0 0 680px;
     width: 680px;
     max-width: none;
+    scroll-snap-align: start;
   }
 }
 
 /* --------------------------------------------------------------------------
-   Project Card (Compact Rounded Rectangle Layout)
+   Ambient Fluid Glow Background (Option A: Original Ambient Mesh)
+   -------------------------------------------------------------------------- */
+
+.projects-ambient-mesh {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  bottom: -100px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.ambient-orb-1 {
+  top: 15%;
+  left: 10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #3b82f6 0%, rgba(59, 130, 246, 0) 70%);
+  animation: floatOrb1 18s ease-in-out infinite alternate;
+}
+
+.ambient-orb-2 {
+  top: 40%;
+  right: 5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #7c3aed 0%, rgba(124, 58, 237, 0) 70%);
+  animation: floatOrb2 22s ease-in-out infinite alternate;
+}
+
+.ambient-orb-3 {
+  bottom: 10%;
+  left: 35%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #0284c7 0%, rgba(2, 132, 199, 0) 70%);
+  animation: floatOrb3 15s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.15); }
+  100% { transform: translate(-30px, 60px) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -30px) scale(1.1); }
+  100% { transform: translate(40px, -50px) scale(1.05); }
+}
+
+@keyframes floatOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -40px) scale(1.2); }
+  100% { transform: translate(-50px, 20px) scale(0.9); }
+}
+
+/* --------------------------------------------------------------------------
+   Project Card (Liquid Glass Frosted Layout - Option A)
    -------------------------------------------------------------------------- */
 
 .project-card {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
+  background: rgba(18, 18, 22, 0.65); /* Semi-transparent tinted dark glass */
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-left: 4px solid var(--project-brand-color, var(--accent));
   border-radius: var(--radius-xl);
   overflow: hidden;
   cursor: pointer;
   outline: none;
-  transition: transform var(--duration-micro) var(--ease-out),
-              box-shadow var(--duration-micro) var(--ease-out),
-              border-color var(--duration-micro) var(--ease-out);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+              inset 0 1px 1px rgba(255, 255, 255, 0.18); /* Specular top edge rim light */
+  transition: transform var(--duration-standard) var(--ease-out),
+              box-shadow var(--duration-standard) var(--ease-out),
+              border-color var(--duration-standard) var(--ease-out),
+              background var(--duration-standard) var(--ease-out);
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .project-card:hover,
 .project-card:focus-visible {
-  transform: translateY(-3px);
-  border-color: var(--border-default);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+  transform: translateY(-4px);
+  background: rgba(24, 24, 30, 0.75);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55),
+              0 0 24px rgba(59, 130, 246, 0.18),
+              inset 0 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 .project-card:focus-visible {
@@ -201,7 +238,7 @@
   .project-card:not(.github-projects-card) .project-card-preview-area {
     flex: 0 0 40%;
     height: 100%;
-    border-right: 1px solid var(--border-subtle);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: none;
   }
 
@@ -410,36 +447,43 @@
 }
 
 /* --------------------------------------------------------------------------
-   GitHub Projects Card (High Contrast White Card Styling)
+   GitHub Projects Card (Sleek Dark Frosted Glass Card)
    -------------------------------------------------------------------------- */
 
 .github-projects-card {
-  background-color: #ffffff;
-  border-left: 4px solid #18181b;
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(18, 18, 22, 0.72) !important;
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-left: 4px solid #ffffff !important;
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 .github-projects-card:hover {
-  box-shadow: 0 16px 40px rgba(255, 255, 255, 0.22);
-  border-color: #ffffff;
+  background: rgba(26, 26, 32, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6),
+              0 0 24px rgba(255, 255, 255, 0.1),
+              inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
 }
 
 .github-projects-card .project-card-title {
-  color: #18181b !important;
+  color: #ffffff !important;
 }
 
 .github-projects-card .project-card-role {
-  color: #52525b !important;
-  font-weight: 600;
+  color: #a1a1aa !important;
+  font-weight: 500;
 }
 
 .github-projects-card .project-card-description {
-  color: #27272a !important;
-  font-weight: 450;
+  color: #d4d4d8 !important;
+  font-weight: 400;
   margin-bottom: var(--space-3);
 }
 
@@ -447,7 +491,8 @@
   width: 42px;
   height: 42px;
   border-radius: var(--radius-md);
-  background-color: #18181b;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -467,18 +512,18 @@
   align-items: center;
   gap: var(--space-3);
   padding: 10px 14px;
-  background-color: #f4f4f5;
-  border: 1px solid #e4e4e7;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
   text-decoration: none;
-  color: #18181b;
+  color: #ffffff;
   transition: all var(--duration-micro) var(--ease-out);
 }
 
 .github-repo-capsule:hover {
-  background-color: #e4e4e7;
-  border-color: #d4d4d8;
-  transform: translateX(2px);
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateX(3px);
 }
 
 .github-repo-indicator {
@@ -488,8 +533,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e4e4e7;
-  color: #71717a;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
   flex-shrink: 0;
 }
 
@@ -497,7 +542,7 @@
   width: 6px;
   height: 6px;
   border-radius: var(--radius-full);
-  background-color: #71717a;
+  background-color: #a1a1aa;
 }
 
 .github-repo-visited .github-repo-indicator {
@@ -516,7 +561,7 @@
   font-family: var(--font-heading);
   font-size: var(--text-body-sm);
   font-weight: 600;
-  color: #18181b;
+  color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -525,15 +570,20 @@
 .github-repo-desc {
   font-family: var(--font-body);
   font-size: 11px;
-  color: #71717a;
+  color: #a1a1aa;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .github-repo-external-icon {
-  color: #71717a;
+  color: #a1a1aa;
   flex-shrink: 0;
+  transition: color var(--duration-micro) var(--ease-out);
+}
+
+.github-repo-capsule:hover .github-repo-external-icon {
+  color: #ffffff;
 }
 
 .github-card-footer {
@@ -550,52 +600,158 @@
   font-family: var(--font-mono);
   font-size: var(--text-label);
   font-weight: 700;
-  color: #18181b;
+  color: var(--accent);
   text-decoration: none;
-  transition: color var(--duration-micro) var(--ease-out);
+  transition: all var(--duration-micro) var(--ease-out);
 }
 
 .github-card-more-link:hover {
-  color: var(--accent);
+  color: var(--accent-hover);
+  transform: translateX(2px);
 }
 
 /* --------------------------------------------------------------------------
-   Pagination Indicator
+   Standalone Frosted Glass Navigation Bubbles & Dots (Zero-Jitter Fixed Layout)
    -------------------------------------------------------------------------- */
 
 .project-pagination-wrapper {
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: var(--space-2);
   margin-top: var(--space-4);
+}
+
+.project-nav-bubble-slot {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.project-nav-bubble {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: rgba(20, 20, 26, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: opacity var(--duration-standard) var(--ease-out),
+              transform var(--duration-standard) var(--ease-out),
+              background var(--duration-micro) var(--ease-out),
+              border-color var(--duration-micro) var(--ease-out),
+              box-shadow var(--duration-micro) var(--ease-out);
+}
+
+.project-nav-bubble.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.project-nav-bubble.hidden {
+  opacity: 0;
+  transform: scale(0.65);
+  pointer-events: none;
+}
+
+.project-nav-bubble:hover.visible {
+  background: rgba(30, 30, 38, 0.9);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--accent);
+  transform: scale(1.1);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5),
+              0 0 16px rgba(59, 130, 246, 0.25);
 }
 
 .project-pagination-pill {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 999px;
+  padding: 6px 12px;
+  background: rgba(20, 20, 26, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.project-pagination-dots-track {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.project-pagination-slot {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-pagination-empty-slot {
+  width: 16px;
+  height: 16px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.project-pagination-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .project-pagination-dot {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: transparent;
-  border: 1.5px solid var(--text-muted);
-  cursor: pointer;
-  padding: 0;
+  background: rgba(255, 255, 255, 0.35);
   transition: all var(--duration-micro) var(--ease-out);
 }
 
-.project-pagination-dot-active {
-  background: var(--text-primary);
-  border-color: var(--text-primary);
-  transform: scale(1.25);
+.project-pagination-dot-mini {
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.project-pagination-item:hover .project-pagination-dot {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.project-pagination-item:hover .project-pagination-dot-mini {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.3);
+}
+
+.project-pagination-active-shape {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85))
+          drop-shadow(0 0 16px rgba(59, 130, 246, 0.4));
 }
 
 /* --------------------------------------------------------------------------
@@ -660,18 +816,20 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 15;
+  z-index: 25;
   width: 32px;
   height: 32px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transition: all var(--duration-micro) var(--ease-out);
 }
 
@@ -687,6 +845,15 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
   transition: scrollbar-color 0.3s ease;
+}
+
+/* Mobile Bottom Sheet Specific Breathing Room */
+.project-bottomsheet-container .project-overlay-scroll-body {
+  padding: var(--space-8) var(--space-5) var(--space-8) var(--space-5);
+}
+
+.project-bottomsheet-container .screenshot-carousel-wrapper {
+  margin-top: var(--space-2);
 }
 
 .project-overlay-scroll-body::-webkit-scrollbar {
@@ -941,24 +1108,23 @@
   filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
 }
 
-/* Floating Bottom-Center Pagination Dots pinned over the carousel area */
+/* Floating Bottom-Center Geometric Pagination pinned over the carousel area */
 .screenshot-pagination-capsule {
   position: absolute;
-  top: 360px; /* Positioned right near the bottom of the screenshot container */
+  top: 360px; /* Positioned near bottom of screenshot container */
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(15, 15, 18, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   pointer-events: auto;
+}
+
+.screenshot-pagination-capsule .project-pagination-wrapper {
+  margin-top: 0;
+  gap: var(--space-2);
+}
+
+.screenshot-pagination-capsule .project-pagination-pill {
+  padding: 6px 14px;
 }
 
 .screenshot-dot {

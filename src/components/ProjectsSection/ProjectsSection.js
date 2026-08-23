@@ -23,6 +23,13 @@ export function ProjectsSection() {
 
   return (
     <section className="projects-section" id="projects" ref={ref}>
+      {/* Ambient Fluid Glow Background Orbs for Liquid Glass Refraction */}
+      <div className="projects-ambient-mesh" aria-hidden="true">
+        <div className="ambient-orb ambient-orb-1" />
+        <div className="ambient-orb ambient-orb-2" />
+        <div className="ambient-orb ambient-orb-3" />
+      </div>
+
       <div className="projects-container">
         <header className="projects-header">
           <h2 className="projects-title">{PROJECTS_HEADING}</h2>

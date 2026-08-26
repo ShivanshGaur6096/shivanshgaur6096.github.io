@@ -402,3 +402,221 @@
   font-size: 11px;
   color: var(--text-muted);
 }
+
+/* ==========================================================================
+   Responsive Architecture: Desktop Bento vs Mobile Expandable Vaults
+   ========================================================================== */
+
+.desktop-only-bento {
+  display: none;
+}
+
+.mobile-only-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 769px) {
+  .desktop-only-bento {
+    display: grid;
+  }
+  .mobile-only-stack {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Expandable Vault Capsules
+   -------------------------------------------------------------------------- */
+
+.exp-expandable-vault {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background: rgba(24, 24, 27, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: border-color var(--duration-micro) var(--ease-out), background var(--duration-micro) var(--ease-out);
+}
+
+.exp-expandable-vault:hover,
+.exp-expandable-vault:focus-within {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(24, 24, 27, 0.6);
+}
+
+.exp-vault-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  user-select: none;
+  gap: var(--space-3);
+  transition: background-color var(--duration-micro) var(--ease-out);
+}
+
+.exp-vault-summary:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.exp-vault-summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.exp-vault-summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-grow: 1;
+}
+
+.exp-vault-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Subheading Company Rows with Micro Avatars */
+.exp-subheading-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.exp-micro-avatar {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1px;
+  flex-shrink: 0;
+}
+
+.exp-subheading-name {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.exp-subheading-tenure {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Wave Effect Expand Trigger Button
+   -------------------------------------------------------------------------- */
+
+.exp-wave-trigger-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.exp-wave-trigger {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  pointer-events: none; /* Inherits click from .exp-vault-summary */
+}
+
+.exp-vault-summary:hover .exp-wave-trigger {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+.exp-wave-chevron {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.exp-wave-trigger.is-open .exp-wave-chevron {
+  transform: rotate(180deg);
+}
+
+/* Continuous Radiating Wave Ripple */
+.exp-wave-ripple {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  animation: expWavePulse 2.8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.exp-wave-trigger.is-open .exp-wave-ripple {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes expWavePulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  60% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Accordion Expanded Cards Body
+   -------------------------------------------------------------------------- */
+
+.exp-vault-accordion-body {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.exp-vault-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: rgba(10, 10, 14, 0.4);
+}
+
+.exp-vault-cards-stack .experience-bento-card {
+  margin: 0;
+}

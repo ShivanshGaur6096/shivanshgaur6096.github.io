@@ -42,15 +42,18 @@ export function BottomSheet({ isOpen, onClose, children }) {
             role="dialog"
             aria-modal="true"
           >
-            <div className="project-bottomsheet-drag-handle" aria-hidden="true" />
-            <button
-              type="button"
-              className="project-overlay-close-btn"
-              onClick={onClose}
-              aria-label="Close project details"
-            >
-              <CloseIcon size={18} />
-            </button>
+            {/* Fixed Header Bar containing Drag Handle & Non-overlapping Close Button */}
+            <div className="project-bottomsheet-header-bar">
+              <div className="project-bottomsheet-drag-handle" aria-hidden="true" />
+              <button
+                type="button"
+                className="project-bottomsheet-header-close-btn"
+                onClick={onClose}
+                aria-label="Close project details"
+              >
+                <CloseIcon size={22} />
+              </button>
+            </div>
 
             <div className="project-overlay-scroll-body">{children}</div>
           </motion.div>

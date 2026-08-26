@@ -13,6 +13,7 @@ import GitHubIcon from '../HeroSection/icons/GitHubIcon';
 import LinkedInIcon from '../HeroSection/icons/LinkedInIcon';
 import EmailIcon from '../HeroSection/icons/EmailIcon';
 import { ExternalLinkIcon } from '../ProjectsSection/icons/ProjectIcons';
+import { trackContactClick, trackResumeDownload } from '../../services/analyticsService';
 import './ContactFooterSection.css';
 
 /**
@@ -115,6 +116,13 @@ export function ContactFooterSection() {
                 className="contact-action-capsule"
                 style={{ '--contact-accent': link.accentColor }}
                 aria-label={`Connect via ${link.label}`}
+                onClick={() => {
+                  if (link.id === 'resume') {
+                    trackResumeDownload('footer');
+                  } else {
+                    trackContactClick(link.label);
+                  }
+                }}
               >
                 <div className="contact-action-icon-wrapper">
                   <ContactIcon name={link.iconName} size={20} />

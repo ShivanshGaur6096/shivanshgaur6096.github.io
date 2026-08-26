@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { socialLinks, animationTimeline } from './heroData';
+import { trackContactClick } from '../../services/analyticsService';
 import GitHubIcon from './icons/GitHubIcon';
 import LinkedInIcon from './icons/LinkedInIcon';
 import EmailIcon from './icons/EmailIcon';
@@ -76,6 +77,7 @@ export function SocialIcons({
             className={`hero-social-link ${isCurrentlyPulsing ? 'hero-icon-pulsing' : ''}`}
             style={{ '--brand-color': link.brandColor }}
             role="listitem"
+            onClick={() => trackContactClick(link.name)}
           >
             <IconComponent size={18} className="hero-social-svg" />
           </a>

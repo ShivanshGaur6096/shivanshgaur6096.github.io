@@ -27,8 +27,14 @@ This is Shivansh Gaur's personal portfolio website — an iOS Developer portfoli
 - **Data files**: User-facing text, lists, and URLs live in `*Data.js` files rather than hardcoded in JSX.
 - **SVG Icons**: Built as clean React SVG components using `currentColor`.
 - **No unnecessary dependencies**: Prefer lightweight custom hooks and vanilla CSS over external packages.
+- **Analytics & Telemetry**:
+  - Centralized in `src/services/analyticsService.js`.
+  - Privacy-first Google Analytics 4 (GA4 ID: `G-6QFHXKHNNG`) configured with IP anonymization and dynamic `debug_mode` (active on `localhost`, disabled in production).
+  - Every new interactive feature (e.g. modals, external links, expandable accordions, interactive widgets, CTAs) must dispatch semantic GA4 events via `trackEvent()` / convenience helper functions.
 
 ## Non-Negotiable Perspectives for Every Feature
 1. **Responsive**: Looks intentional on both Desktop (>768px) and Mobile (<=768px).
 2. **Theming**: Uses design system tokens consistently.
 3. **Accessibility**: Semantic headings (`h1` -> `h2`), polite `aria-live` for dynamic changes, accessible roles.
+4. **Telemetry & Event Tracking**: Any user interaction, modal toggle, outbound link, or download must be wired to `src/services/analyticsService.js` with structured event names and metadata.
+

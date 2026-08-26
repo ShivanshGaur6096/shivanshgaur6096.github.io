@@ -168,6 +168,26 @@
 .hero-hint-sparkle {
   color: var(--accent);
   margin-right: var(--space-1);
+  display: inline-block;
+  animation: sparkleRadiate 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes sparkleRadiate {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 0px var(--accent));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.7));
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 0px var(--accent));
+  }
 }
 
 @keyframes heroHintFadeIn {
@@ -193,6 +213,14 @@
   color: var(--text-secondary);
   margin: 0 0 var(--space-6) 0;
   min-height: 5.2em; /* Reserves 3 full lines of text and icons */
+}
+
+/* NatWest official brand purple highlight (#a855f7 / #c084fc for dark-mode high contrast) */
+.highlight-natwest {
+  color: #c084fc;
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.25);
+  transition: color var(--duration-micro) var(--ease-out);
 }
 
 .hero-typewriter-cursor {

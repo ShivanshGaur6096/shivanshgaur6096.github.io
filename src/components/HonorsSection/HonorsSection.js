@@ -8,6 +8,7 @@ import {
   awardsList,
   testimonialsList,
 } from './honorsData';
+import { trackHonorClick, trackTestimonialView } from '../../services/analyticsService';
 import TestimonialDetailModal from './TestimonialDetailModal';
 import './HonorsSection.css';
 
@@ -176,6 +177,7 @@ export function HonorsSection() {
               initial={{ opacity: 0, y: 25 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
+              onClick={() => trackHonorClick(cert.title, 'Certification')}
             >
               <div className="honors-card-header">
                 <div className="honors-card-branding">
@@ -221,6 +223,7 @@ export function HonorsSection() {
                 initial={{ opacity: 0, y: 25 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
                 transition={{ duration: 0.4, delay: 0.2 + index * 0.12 }}
+                onClick={() => trackHonorClick(award.title, 'Award')}
               >
                 <div className="honors-card-header">
                   <div className="honors-card-branding">
@@ -265,7 +268,10 @@ export function HonorsSection() {
 
         <TestimonialsMarquee
           testimonials={testimonialsList}
-          onSelectTestimonial={(test) => setSelectedTestimonial(test)}
+          onSelectTestimonial={(test) => {
+            setSelectedTestimonial(test);
+            trackTestimonialView(test.author, test.company);
+          }}
         />
       </div>
 

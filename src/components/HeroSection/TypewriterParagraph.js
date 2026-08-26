@@ -37,9 +37,25 @@ export function TypewriterParagraph({
   const displayedContent = isReducedMotion ? text : displayText;
   const showCursor = isActive && !isReducedMotion && !isComplete;
 
+  // Helper to render text with NatWest highlighted in official brand purple
+  const renderFormattedText = (rawText) => {
+    if (!rawText) return null;
+    const parts = rawText.split(/(Natwest|NatWest)/g);
+    return parts.map((part, index) => {
+      if (part.toLowerCase() === 'natwest') {
+        return (
+          <strong key={index} className="highlight-natwest">
+            {part}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
   return (
     <p className="hero-paragraph">
-      <span>{displayedContent}</span>
+      <span>{renderFormattedText(displayedContent)}</span>
       {showCursor && <span className="hero-typewriter-cursor" aria-hidden="true">|</span>}
       {children}
     </p>

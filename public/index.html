@@ -24,6 +24,20 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&family=Syne:wght@800&display=swap"
     />
 
+    <!-- Google Analytics 4 (GA4) with Anonymized IP -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QFHXKHNNG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      var isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      gtag('config', 'G-6QFHXKHNNG', {
+        anonymize_ip: true,
+        cookie_flags: 'SameSite=None;Secure',
+        debug_mode: isLocalhost
+      });
+    </script>
+
     <!-- Title -->
     <title>Shivansh Gaur - Portfolio</title>
   </head>

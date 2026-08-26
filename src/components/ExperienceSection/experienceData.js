@@ -21,9 +21,11 @@ export const experiencesData = [
   {
     id: "blackngreen",
     company: "blackNgreen",
+    shortName: "blackNgreen",
     role: "iOS Software Engineer",
     location: "Gurugram, India",
     period: "Nov, 2023 - Nov, 2025",
+    tenure: "2 Yrs (2023 - 2025)",
     isCurrent: false,
     brandColor: "#10b981", // Emerald Green
     accentColor: "#34d399",
@@ -35,9 +37,11 @@ export const experiencesData = [
   {
     id: "tech-mahindra",
     company: "Tech Mahindra",
+    shortName: "Tech Mahindra Ltd.",
     role: "Software Engineer",
     location: "Noida, India",
     period: "Feb, 2021 - Nov, 2023",
+    tenure: "2 Yrs 9 Mos (2021 - 2023)",
     isCurrent: false,
     brandColor: "#e11d48", // Crimson / Tech Red
     accentColor: "#fb7185",
@@ -62,8 +66,10 @@ export const educationData = [
   {
     id: "radiant-12",
     institution: "Radiant Stars English School, Aligarh",
+    shortName: "Radiant Stars English School",
     degree: "Senior Secondary (12th Grade) • CBSE Board",
     period: "2014 - 2016",
+    tenure: "CBSE (2012 - 2016)",
     brandColor: "#3b82f6", // Electric Blue
     accentColor: "#60a5fa",
     logo: `${process.env.PUBLIC_URL || ''}/assets/experience-logos/radiant-stars-english-school.png`,
@@ -72,6 +78,7 @@ export const educationData = [
   {
     id: "radiant-10",
     institution: "Radiant Stars English School, Aligarh",
+    shortName: "Radiant Stars English School",
     degree: "High School (10th Grade) • CBSE Board",
     period: "2012 - 2014",
     brandColor: "#3b82f6", // Electric Blue

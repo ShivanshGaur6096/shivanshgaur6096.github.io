@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './ProjectsSection.css';
-import { PROJECTS_HEADING, PROJECTS_SUBHEADING, PROJECTS_LIVE_BADGE } from './projectsData';
+import { PROJECTS_HEADING, PROJECTS_SUBHEADING, PROJECTS_LIVE_BADGE, projectCards } from './projectsData';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import { trackProjectView } from '../../services/analyticsService';
 import ProjectCarousel from './ProjectCarousel';
 import DetailOverlay from './DetailOverlay';
 
@@ -17,6 +18,10 @@ export function ProjectsSection() {
   const handleOpenDetail = (projectId) => {
     setIsHintDismissed(true);
     setOpenProjectId(projectId);
+
+    // Dispatch custom GA4 telemetry for project modal open
+    const foundProject = projectCards.find((p) => p.id === projectId);
+    trackProjectView(projectId, foundProject?.title || projectId);
   };
 
   const handleCloseDetail = () => {

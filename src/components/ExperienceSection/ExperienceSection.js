@@ -7,6 +7,7 @@ import {
   experiencesData,
   educationData,
 } from './experienceData';
+import { trackExpandVault } from '../../services/analyticsService';
 import './ExperienceSection.css';
 
 /**
@@ -295,7 +296,11 @@ export function ExperienceSection() {
           <div className="exp-expandable-vault">
             <div
               className={`exp-vault-summary ${isPastExpOpen ? 'is-open' : ''}`}
-              onClick={() => setIsPastExpOpen((prev) => !prev)}
+              onClick={() => {
+                const nextState = !isPastExpOpen;
+                setIsPastExpOpen(nextState);
+                trackExpandVault('previous_commercial_roles', nextState);
+              }}
               role="button"
               tabIndex={0}
               aria-expanded={isPastExpOpen}
@@ -303,7 +308,9 @@ export function ExperienceSection() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  setIsPastExpOpen((prev) => !prev);
+                  const nextState = !isPastExpOpen;
+                  setIsPastExpOpen(nextState);
+                  trackExpandVault('previous_commercial_roles', nextState);
                 }
               }}
             >
@@ -432,7 +439,11 @@ export function ExperienceSection() {
           <div className="exp-expandable-vault">
             <div
               className={`exp-vault-summary ${isSchoolingOpen ? 'is-open' : ''}`}
-              onClick={() => setIsSchoolingOpen((prev) => !prev)}
+              onClick={() => {
+                const nextState = !isSchoolingOpen;
+                setIsSchoolingOpen(nextState);
+                trackExpandVault('secondary_high_schooling', nextState);
+              }}
               role="button"
               tabIndex={0}
               aria-expanded={isSchoolingOpen}
@@ -440,7 +451,9 @@ export function ExperienceSection() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  setIsSchoolingOpen((prev) => !prev);
+                  const nextState = !isSchoolingOpen;
+                  setIsSchoolingOpen(nextState);
+                  trackExpandVault('secondary_high_schooling', nextState);
                 }
               }}
             >

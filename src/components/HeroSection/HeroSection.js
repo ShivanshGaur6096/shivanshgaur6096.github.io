@@ -4,6 +4,7 @@ import { heroContent, animationTimeline, descriptorItems, endMessages } from './
 import { useReducedMotion } from './hooks/useReducedMotion';
 import { useAnimationOrchestrator, PHASES } from './hooks/useAnimationOrchestrator';
 import { useDescriptorQueue } from './hooks/useDescriptorQueue';
+import { trackSubtitleGameInteraction } from '../../services/analyticsService';
 import StaticContent from './StaticContent';
 import SubtitleShuffler from './SubtitleShuffler';
 import HintText from './HintText';
@@ -67,7 +68,6 @@ export function HeroSection() {
   const handleSubtitleTap = () => {
     if (!hasStartedGame) {
       setHasStartedGame(true);
-      // If we are before index 6 (7th item), hide hint while user explores
       if (subtitleIndex < 5) {
         setIsHintVisible(false);
       }
@@ -78,6 +78,7 @@ export function HeroSection() {
     }
 
     advanceSubtitle();
+    trackSubtitleGameInteraction(currentSubtitle, subtitleIndex + 1);
   };
 
   const isTypewriterActive = currentPhase === PHASES.TYPEWRITER;

@@ -1,6 +1,7 @@
 import React from "react";
 import profile from "../assets/profile.jpg";
 import { heroContent } from "./HeroSection/heroData";
+import { trackResumeDownload } from "../services/analyticsService";
 import "./Toolbar.css";
 
 const Toolbar = ({ isVisible }) => {
@@ -36,6 +37,7 @@ const Toolbar = ({ isVisible }) => {
           rel="noopener noreferrer"
           className="toolbar-action-btn toolbar-resume-btn"
           aria-label="View Resume"
+          onClick={() => trackResumeDownload('toolbar')}
         >
           <span>Resume</span>
         </a>

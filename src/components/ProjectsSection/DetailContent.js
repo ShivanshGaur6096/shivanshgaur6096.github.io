@@ -1,6 +1,7 @@
 import React from 'react';
 import ScreenshotCarousel from './ScreenshotCarousel';
 import { AppStoreIcon, ExternalLinkIcon } from './icons/ProjectIcons';
+import { trackAppStoreClick } from '../../services/analyticsService';
 import { useAppStoreData } from './hooks/useAppStoreData';
 
 /**
@@ -117,6 +118,7 @@ export function DetailContent({ project, detail }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="screenshot-appstore-btn"
+                onClick={() => trackAppStoreClick(project.title, directStoreUrl)}
               >
                 <AppStoreIcon size={16} />
                 <span>Download on App Store</span>

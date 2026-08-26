@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { calculateTypewriterText } from './hooks/useTypewriter';
 import { animationTimeline } from './heroData';
+import { trackResumeDownload } from '../../services/analyticsService';
 import ResumeIcon from './icons/ResumeIcon';
 
 const TEXT_PHASE_1 = 'OR JUST';
@@ -109,6 +110,7 @@ export function ResumeButton({
         className="hero-resume-button"
         aria-label="Download Resume PDF"
         tabIndex={0}
+        onClick={() => trackResumeDownload('hero')}
       >
         {showIcon && <ResumeIcon size={18} className="hero-resume-icon" />}
         <span className="hero-resume-text">{displayText || (isActive ? '' : TEXT_FINAL)}</span>
